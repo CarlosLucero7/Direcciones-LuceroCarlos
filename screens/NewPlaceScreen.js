@@ -3,10 +3,12 @@ import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from 
 import Colors from '../constants/Colors'
 import { addPlace } from '../store/places.actions'
 import { useDispatch } from 'react-redux'
+import ImageSelctor from '../components/imageSelctor'
 
 const NewPlaceScreen = ({navigation}) => {
     const dispatch = useDispatch();
     const [title, setTitle] = useState('');
+    const [image, setImage] = useState();
 
     const handleTitleChange = (text)=> setTitle(text);
     const handleSave = () =>{
@@ -19,6 +21,7 @@ const NewPlaceScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <Text style={styles.title}>Titulo:</Text>
                 <TextInput style={styles.input} value={title} onChangeText={handleTitleChange}/>
+                <ImageSelctor onImage={setImage}/>
                 <TouchableOpacity style={styles.button} onPress={handleSave}>
                     <Text>Guardar direccion</Text>
                 </TouchableOpacity>
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
     inputContainer: {
         justifyContent:'space-around',
         alignItems:'center',
-        height:200,
+        height:500,
         width:350,
         borderColor:'black',
         borderWidth:2,
