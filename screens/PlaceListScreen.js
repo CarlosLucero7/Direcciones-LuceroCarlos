@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { useSelector } from 'react-redux'
 import PlaceItem from '../components/PlaceItm';
 
-const PlaceListScreen = () => {
+const PlaceListScreen = ({navigation}) => {
     const places = useSelector(state => state.places.places);
 
     const renderItem = ({ item }) =>(
@@ -11,7 +11,7 @@ const PlaceListScreen = () => {
             title={item.title}
             image={item.image}
             adress={"random"}
-            onSelect={()=> navigation.navigate("Detalle",{placeId: item.id})}
+            onSelect={() => navigation.navigate("Detalle", {placeId: item.id})}
         />
     )
     
@@ -29,3 +29,6 @@ const styles = StyleSheet.create({
 })
 
 export default PlaceListScreen
+
+
+//  CLASE 07/06 MIN 01:05:00
